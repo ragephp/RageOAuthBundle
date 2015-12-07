@@ -11,15 +11,20 @@
         "security",
 
         "amazon",
+        "auth0",
+        "azure",
         "bitbucket",
         "bitly",
         "box",
         "bufferapp",
         "dailymotion",
+        "deezer",
         "deviantart",
+        "discogs",
         "disqus",
         "dropbox",
         "eventbrite",
+        "eve online",
         "facebook",
         "fiware",
         "flickr",
@@ -32,13 +37,21 @@
         "linkedin",
         "mail.ru",
         "odnoklassniki",
+        "paypal",
         "qq",
+        "reddit",
+        "runkeeper",
         "salesforce",
         "sensio connect",
+        "sina weibo",
+        "slack",
+        "sound cloud",
+        "spotify",
         "stack exchange",
         "stereomood",
-        "sina weibo",
-        "spotify",
+        "strava",
+        "toshl",
+        "trakt",
         "trello",
         "twitch",
         "twitter",
@@ -46,12 +59,12 @@
         "wechat",
         "windows live",
         "wordpress",
+        "xing",
         "yahoo",
         "yandex",
+        "youtube",
         "37signals"
     ],
-    "homepage":    "http://github.com/hwi/HWIOAuthBundle",
-    "license":     "MIT",
 
     "authors": [
         {
@@ -100,12 +113,10 @@
     },
 
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "HWI\\Bundle\\OAuthBundle\\": ""
         }
     },
-
-    "target-dir": "HWI/Bundle/OAuthBundle",
 
     "minimum-stability": "dev",
     "prefer-stable": true

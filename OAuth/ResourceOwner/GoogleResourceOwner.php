@@ -28,6 +28,8 @@ class GoogleResourceOwner extends GenericOAuth2ResourceOwner
         'identifier'     => 'id',
         'nickname'       => 'name',
         'realname'       => 'name',
+        'firstname'      => 'given_name',
+        'lastname'       => 'family_name',
         'email'          => 'email',
         'profilepicture' => 'picture',
     );
@@ -44,6 +46,16 @@ class GoogleResourceOwner extends GenericOAuth2ResourceOwner
             'hd'                      => $this->options['hd'],
             'prompt'                  => $this->options['prompt']
         ), $extraParameters));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function revokeToken($token)
+    {
+        $response = $this->httpRequest($this->normalizeUrl($this->options['revoke_token_url'], array('token' => $token)));
+
+        return 200 === $response->getStatusCode();
     }
 
     /**

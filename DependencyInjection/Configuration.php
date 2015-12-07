@@ -56,13 +56,17 @@ class Configuration implements ConfigurationInterface
             'paypal',
             'qq',
             'reddit',
+            'runkeeper',
             'salesforce',
             'sensio_connect',
             'sina_weibo',
+            'slack',
             'spotify',
             'soundcloud',
             'stack_exchange',
+            'strava',
             'toshl',
+            'trakt',
             'twitch',
             'vkontakte',
             'wechat',
@@ -141,6 +145,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('target_path_parameter')->defaultNull()->end()
                 ->booleanNode('use_referer')->defaultFalse()->end()
                 ->scalarNode('templating_engine')->defaultValue('twig')->end()
+                ->scalarNode('failed_auth_path')->defaultValue('hwi_oauth_connect')->end()
             ->end()
         ;
 
@@ -161,6 +166,7 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->useAttributeAsKey('name')
                     ->prototype('array')
+                        ->ignoreExtraKeys()
                         ->children()
                             ->scalarNode('base_url')->end()
                             ->scalarNode('access_token_url')

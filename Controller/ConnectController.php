@@ -24,15 +24,12 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 
 /**
- * ConnectController.
- *
  * @author Alexander <iam.asm89@gmail.com>
  */
 class ConnectController extends Controller
@@ -186,6 +183,11 @@ class ConnectController extends Controller
             $accessToken = $session->get('_hwi_oauth.connect_confirmation.'.$key);
         }
 
+        // Redirect to the login path if the token is empty (Eg. User cancelled auth)
+        if (null === $accessToken) {
+            return $this->redirectToRoute($this->container->getParameter('hwi_oauth.failed_auth_path'));
+        }
+        
         $userInformation = $resourceOwner->getUserInformation($accessToken);
 
         // Show confirmation page?
@@ -247,7 +249,7 @@ class ConnectController extends Controller
                 $sessionKey = '_security.'.$providerKey.'.target_path';
 
                 $param = $this->container->getParameter('hwi_oauth.target_path_parameter');
-                if (!empty($param) && $targetUrl = $request->get($param, null, true)) {
+                if (!empty($param) && $targetUrl = $request->get($param)) {
                     $session->set($sessionKey, $targetUrl);
                 }
 
