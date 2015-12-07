@@ -1,7 +1,7 @@
 RageOAuthBundle
 ==============
 
-[![Build Status](https://secure.travis-ci.org/ragephp/RageOAuthBundle.svg?branch=master)](http://travis-ci.org/hwi/HWIOAuthBundle)
+[![Build Status](https://secure.travis-ci.org/ragephp/RageOAuthBundle.svg?branch=master)](http://travis-ci.org/ragephp/RageOAuthBundle)
 
 The RageOAuthBundle adds support for authenticating users via OAuth1.0a or OAuth2 in Symfony2.
 
