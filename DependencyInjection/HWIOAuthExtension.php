@@ -69,10 +69,13 @@ class HWIOAuthExtension extends Extension
         // set use referer parameter
         $container->setParameter('hwi_oauth.use_referer', $config['use_referer']);
 
+        // set failed auth path
+        $container->setParameter('hwi_oauth.failed_auth_path', $config['failed_auth_path']);
+        
         // setup services for all configured resource owners
         $resourceOwners = array();
         foreach ($config['resource_owners'] as $name => $options) {
-            $resourceOwners[] = $name;
+            $resourceOwners[$name] = $name;
             $this->createResourceOwnerService($container, $name, $options);
         }
         $container->setParameter('hwi_oauth.resource_owners', $resourceOwners);
@@ -122,7 +125,7 @@ class HWIOAuthExtension extends Extension
             }
 
             foreach ($config['connect'] as $key => $serviceId) {
-                if ('confirmation' == $key) {
+                if ('confirmation' === $key) {
                     $container->setParameter('hwi_oauth.connect.confirmation', $config['connect']['confirmation']);
 
                     continue;

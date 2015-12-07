@@ -26,6 +26,8 @@ json;
     protected $paths = array(
         'identifier' => 'id',
         'nickname'   => 'username',
+        'firstname'   => 'first_name',
+        'lastname'   => 'last_name',
         'realname'   => 'name',
     );
 
@@ -80,14 +82,16 @@ json;
 
     public function testRevokeToken()
     {
-        $this->mockBuzz('true', 'application/json');
+        $this->buzzResponseHttpCode = 200;
+        $this->mockBuzz('{"access_token": "bar"}', 'application/json');
 
         $this->assertTrue($this->resourceOwner->revokeToken('token'));
     }
 
     public function testRevokeTokenFails()
     {
-        $this->mockBuzz('false', 'application/json');
+        $this->buzzResponseHttpCode = 401;
+        $this->mockBuzz('{"access_token": "bar"}', 'application/json');
 
         $this->assertFalse($this->resourceOwner->revokeToken('token'));
     }
