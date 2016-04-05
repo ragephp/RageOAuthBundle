@@ -87,11 +87,11 @@
 
     "require": {
         "php":                          ">=5.6.0",
-        "symfony/framework-bundle":     "~2.7",
-        "symfony/security-bundle":      "~2.7",
-        "symfony/options-resolver":     "~2.7",
-        "symfony/form":                 "~2.7",
-        "symfony/yaml":                 "~2.7",
+        "symfony/framework-bundle":     "~2.7|~3.0",
+        "symfony/security-bundle":      "~2.7|~3.0",
+        "symfony/options-resolver":     "~2.7|~3.0",
+        "symfony/form":                 "~2.7|~3.0",
+        "symfony/yaml":                 "~2.7|~3.0",
         "kriswallsmith/buzz":           "~0.13"
     },
 
@@ -101,9 +101,9 @@
 
     "require-dev": {
         "doctrine/orm":                 "~2.3",
-        "symfony/validator":            "~2.7",
-        "symfony/twig-bundle":          "~2.7",
-        "symfony/phpunit-bridge":       "~2.7",
+        "symfony/validator":            "~2.7|~3.0",
+        "symfony/twig-bundle":          "~2.7|~3.0",
+        "symfony/phpunit-bridge":       "~2.7|~3.0",
         "phpunit/phpunit": "~5.0"
     },
 
@@ -119,5 +119,10 @@
     },
 
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
 }

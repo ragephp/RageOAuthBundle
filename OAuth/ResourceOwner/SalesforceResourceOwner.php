@@ -12,7 +12,7 @@
 namespace HWI\Bundle\OAuthBundle\OAuth\ResourceOwner;
 
 use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Salesforce Resource Owner
@@ -62,7 +62,7 @@ class SalesforceResourceOwner extends GenericOAuth2ResourceOwner
     /**
      * {@inheritDoc}
      */
-    protected function configureOptions(OptionsResolverInterface $resolver)
+    protected function configureOptions(OptionsResolver $resolver)
     {
         parent::configureOptions($resolver);
 
@@ -83,7 +83,7 @@ class SalesforceResourceOwner extends GenericOAuth2ResourceOwner
                 return $value;
             }
 
-            return preg_replace('~\.login\.~', '.test.', $value, 1);
+            return preg_replace('~login\.~', 'test.', $value, 1);
         };
 
         // Symfony <2.6 BC
