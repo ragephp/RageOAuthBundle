@@ -151,7 +151,6 @@ class Configuration implements ConfigurationInterface
 
         $this->addHttpClientConfiguration($rootNode);
         $this->addConnectConfiguration($rootNode);
-        $this->addFosubConfiguration($rootNode);
         $this->addResourceOwnersConfiguration($rootNode);
 
         return $builder;
@@ -403,25 +402,6 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('account_connector')->cannotBeEmpty()->end()
                         ->scalarNode('registration_form_handler')->cannotBeEmpty()->end()
                         ->scalarNode('registration_form')->cannotBeEmpty()->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
-    }
-
-    private function addFosubConfiguration(ArrayNodeDefinition $node)
-    {
-        $node
-            ->children()
-                ->arrayNode('fosub')
-                    ->children()
-                        ->scalarNode('username_iterations')->defaultValue(5)->cannotBeEmpty()->end()
-                        ->arrayNode('properties')
-                            ->isRequired()
-                            ->useAttributeAsKey('name')
-                                ->prototype('scalar')
-                            ->end()
-                        ->end()
                     ->end()
                 ->end()
             ->end()
